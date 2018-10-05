@@ -6,4 +6,5 @@ In this project you(me) are given a web-based application that reads RSS feeds. 
 ## Access
 testing is run using Jasmine g
 To run the application, you must either download directly from folder via git or clone the repository via the link git hub gives you into your terminal
-`git clone link https://github.com/rubenfrancogarcia/Feed-Reader.git` 
+`git clone link https://github.com/rubenfrancogarcia/Feed-Reader.git`
+Then access the folder and open `index.html` file in a browser. 

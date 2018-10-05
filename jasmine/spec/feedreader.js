@@ -25,21 +25,18 @@ $(function() {
 
          it('has a name', function(){
            for(let feed of allFeeds){
-           expect(feed.name).toBeDefined();
-           expect(feed.name.length).not.toBe(0);
+             expect(feed.name).toBeDefined();
+             expect(feed.name.length).not.toBe(0);
          }
          });
     });
     // this test the menu default status to check as intented
-    //by running 2 tests 
+    //by running 2 tests
     describe("The Menu", function (){
 
       it('is hidden by default', function() {
         const body = document.querySelector('body');
         expect(body.classList.contains('menu-hidden')).toBe(true);
-        //why won't the code in line 62 not work?
-        //expect($('body').contains('menu-hidden')).toBe(True);
-        //i got the syntax from a cheatsheet provided via udacity resource
       });
 
       it('changes when clicked', function(){
@@ -62,32 +59,32 @@ $(function() {
       });
 
       it("load the complete feed", function(){
-          const feed = document.querySelector('.feed');
-          expect(feed.children.length > 0).toBe(true);
-          //why don't this one below work?
-          //expect(feed.hasChildNodes).toBe(true);
-
+          const entry_feed = $(".feed .entry");
+          expect(entry_feed.children.length > 0).toBe(true);
       });
     });
+
     describe('New Feed Selectoin', function(){
-      const feed = document.querySelector('.feed');
-      const feed1 = [];
-      const feed2 = [];
+    let defaultFeed;
+    //why if I do not declare the variable here does it give me an error if I define the variable below?
+
 
       beforeEach(function(done){
-        loadFeed(0);
-        Array.from(feed.children).forEach(function(entry){
-          feed1.push(entry.innerText);
-        });
-        loadFeed(1, done);
-      });
-
-      it("feed changes", function(){
-        Array.from(feed.children).forEach(function(entry){
-          feed2.push(entry.innerText);
-
-      expect(feed2 === feed1).toBe(false);
+        loadFeed(0, function(){
+          let defaultFeed = $(".feed .entry").html();
+          loadFeed(1,function() {
+            done();
+          });
         });
       });
-    });
+
+      it("feed changes", function(done){
+        let newFeed = $(".feed .entry").html();
+        expect(newFeed).not.toBe(defaultFeed);
+        done();
+
+        //why do I need to call done here as well if we called it in the beforeEach statement above.
+        });
+      });
+
 }());
