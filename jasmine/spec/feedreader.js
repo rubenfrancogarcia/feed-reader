@@ -1,6 +1,8 @@
 
 
 $(function() {
+
+    //this tests the RSS feed expectaion via several test components .
     describe('RSS Feeds', function() {
 
         it('are defined', function() {
@@ -28,7 +30,8 @@ $(function() {
          }
          });
     });
-
+    // this test the menu default status to check as intented
+    //by running 2 tests 
     describe("The Menu", function (){
 
       it('is hidden by default', function() {
